@@ -1,1 +1,2 @@
-​
+If the value of node is less than low, then in order to increase it we move to right of it according to property of BST and similarly move left if value is greater than high.
+If both of above situations are false, then the node stays and hence we just call left and right on it and move ahead.
