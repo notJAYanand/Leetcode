@@ -2,6 +2,7 @@ class MyStack {
 public:
     queue<int>q1;
     queue<int>q2;
+        
     int topElement;
     MyStack() {
         
@@ -28,7 +29,7 @@ public:
     }
     
     bool empty() {
-        return q1.empty();
+        return q1.size()==0;
     }
 };
 
