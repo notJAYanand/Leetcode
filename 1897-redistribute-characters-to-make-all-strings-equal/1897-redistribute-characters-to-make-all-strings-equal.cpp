@@ -20,8 +20,8 @@ public:
             }
             else
             { 
-                res=false;
-                break;
+                return false;
+                
             }
         }
         return res;
