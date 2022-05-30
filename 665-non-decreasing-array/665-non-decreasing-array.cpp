@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool checkPossibility(vector<int>& nums) {
-        vector <int> check=nums;
-        sort(check.begin(),check.end());
+        // vector <int> check=nums;
+        // sort(check.begin(),check.end());
         int count=0;
         for(int i=0;i<nums.size()-1 && count<2;i++)
         {
