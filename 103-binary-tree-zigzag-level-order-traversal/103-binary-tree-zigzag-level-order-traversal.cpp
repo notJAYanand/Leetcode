@@ -40,7 +40,7 @@ public:
             
             if(count%2==0) 
             {
-                reverse(temp.begin(),temp.end());
+                reverse(temp.begin(),temp.end()); //cheating
             }
             count++;
             res.push_back(temp);
