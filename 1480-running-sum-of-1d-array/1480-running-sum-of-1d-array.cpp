@@ -5,9 +5,7 @@ public:
         int sum=0;
         int i=0;
         while(i<nums.size())
-        {
-            
-            
+        { 
             sum=sum+nums[i];
             res[i]=sum;
             i++;
