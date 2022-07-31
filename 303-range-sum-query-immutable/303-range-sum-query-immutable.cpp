@@ -1,6 +1,7 @@
-class NumArray {
-public:
+class NumArray { 
     vector<int> nums;
+public:
+
     NumArray(vector<int>& nums) {
         this->nums=nums;
     }
