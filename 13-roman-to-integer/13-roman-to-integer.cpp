@@ -1,8 +1,6 @@
 class Solution {
 public:
     int romanToInt(string s) {
-        // max roman number= 3999 here
-        // int res=0;
         unordered_map<char,int> mp;
         mp['I']=1;
         mp['V']=5;
@@ -12,16 +10,19 @@ public:
         mp['D']=500;
         mp['M']=1000;
         
-        int res= mp[s[s.length()-1]];
-        for(int i=s.length()-2;i>=0;i--)
+        int n=s.size();
+        int res=mp[s[n-1]];
+        
+        for(int i=n-1;i>0;i--)
         {
-            if(mp[s[i]]<mp[s[i+1]])
+            if(mp[s[i]]>mp[s[i-1]])
             {
-                res-=mp[s[i]];
+                res-=mp[s[i-1]];
             }
             else
-                res+=mp[s[i]];
+                res+=mp[s[i-1]];
         }
         return res;
+        
     }
 };
