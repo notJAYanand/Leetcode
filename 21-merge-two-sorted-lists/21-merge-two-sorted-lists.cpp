@@ -10,52 +10,19 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1==NULL) return list2;
+        if(list2==NULL) return list1;
         
-        //1->2->4
-        //1->3->4
-        //-1->1-1-2-3-4-4    
-            
-//         ListNode fake(-1);
-//         ListNode *last=&fake;
-//         while(l1!=NULL && l2!=NULL)
-//         {
-//             if(l1->val < l2->val)
-//             {
-//                 last->next=l1;
-//                 last=l1;
-//                 l1=l1->next;
-//             }
-//             else
-//             {
-//                 last->next=l2;
-//                 last=l2;
-//                 l2=l2->next;
-//             }
-            
-//         }
-//         if(l1!=NULL)
-//         {
-//             last->next=l1;
-//         }
-//         if(l2!=NULL)
-//         {
-//             last->next=l2;
-//         }
-//        return fake.next; 
-        
-        if(l1==NULL) return l2;
-        if(l2==NULL) return l1;
-        
-        if(l1->val<l2->val)
+        if(list1->val<list2->val) 
         {
-            l1->next= mergeTwoLists(l1->next,l2);
-            return l1;
+            list1->next=mergeTwoLists(list1->next,list2);
+            return list1;
         }
-        else 
+        else
         {
-            l2->next=mergeTwoLists(l1,l2->next);
-            return l2;
+            list2->next=mergeTwoLists(list1,list2->next);
+            return list2;
         }
         
     }
