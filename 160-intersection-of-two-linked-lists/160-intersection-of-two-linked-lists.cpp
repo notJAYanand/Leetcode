@@ -9,40 +9,43 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        if(headA==NULL || headB==NULL) return NULL;
+        if(headA==headB) return headA;
         
-        ListNode *curA=headA;
-        ListNode *curB=headB;
+        ListNode* ptr1=headA;
+        ListNode* ptr2=headB;
         int countA=0,countB=0;
-        while(curA!=NULL){
-            ++countA;
-            curA=curA->next;
-        }
-        while(curB!=NULL){
-            ++countB;
-            curB=curB->next;
-        }
         
-        int common_no= abs(countA-countB);
-        
+        while(ptr1!=NULL)
+        {
+            countA++;
+            ptr1=ptr1->next;
+        }
+        while(ptr2!=NULL)
+        {
+            countB++;
+            ptr2=ptr2->next;
+        }
+        int count=abs(countA-countB);
+        cout<<countA<<' '<<countB;
         if(countA>countB)
         {
-         for(int i=0;i<common_no;i++){
-             headA=headA->next;
-         }   
+            while(count)
+            {
+                count--;
+                headA=headA->next;
+            }
         }
         else if(countB>countA)
         {
-            for(int i=0;i<common_no;i++)
+            while(count--)
             {
                 headB=headB->next;
             }
         }
         while(headA!=NULL && headB!=NULL)
         {
-            if(headA==headB)
-            {
-                return headA;
-            }
+            if(headA==headB) return headA;
             headA=headA->next;
             headB=headB->next;
         }
