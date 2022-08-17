@@ -1,34 +1,40 @@
 class Solution {
 public:
-    
-// long long int fact(int n) {
-//     long long int result[10001] = {0};
-    
-//     result[0] = 1;
-//     result[1] = 1;
-//     result[2] = 2;
+//     long long int factorial(int n)
+//     {
+//         if(n==0) return 1;
+//         // vector<int> fact(n+1,0);
+//         long long int fact[n+1];
         
-//     for (int i = 3; i <= n; ++i) {
-//         result[i] = i * result[i - 1];
-     
-      
-//    }
-//     return result[n];
-// }
-    
+//         fact[0]=1;
+//         fact[1]=1;
+//         // fact[2]=2;
+//         for(int i=2;i<n+1;i++)
+//         {
+//             fact[i]=i*fact[i-1];
+//         }
+//         return fact[n];
+//     }
+//     int trailingZeroes(int n) {
+        
+//         long long int x=factorial(n);
+//         int count=0; 
+//         while(x!=0)
+//         {
+//             if(x%10==0) count++;
+//             x/=10;
+//         }
+//         // cout<<factorial(n);
+//         return count;
+//     }
     int trailingZeroes(int n) {
-        // long long int f=fact(n);
-        
-        // string s=f.to_string();
-        // int i=s.length()-1;
-        int count=0; //count power of 5 essentially
-        int d=5;
-        while(d<=n)
+        int res = 0;
+        while (n)
         {
-
-            count=count+n/d;
-            d*=5;
+            n /= 5; 
+            res += n;
         }
-        return count;
+            
+        return res;
     }
 };
