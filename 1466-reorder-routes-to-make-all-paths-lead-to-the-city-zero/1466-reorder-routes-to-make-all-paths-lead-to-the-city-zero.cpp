@@ -1,19 +1,40 @@
 class Solution {
 public:
-    int dfs(vector<vector<int>> &al, vector<bool> &visited, int from) {
-        auto change = 0;
-        visited[from] = true;
-        for (auto to : al[from])
-            if (!visited[abs(to)])
-                change += dfs(al, visited, abs(to)) + (to > 0);
-        return change;        
-    }
     int minReorder(int n, vector<vector<int>>& connections) {
-        vector<vector<int>> al(n);
-        for (auto &c : connections) {
-            al[c[0]].push_back(c[1]);
-            al[c[1]].push_back(-c[0]);
+        
+        //for every city store the adjacent city along with direction 
+        //to store the direction we use positive indicating a road from a to b for a
+        //we use negative indicating there is a road from b to a for a
+        
+        vector<vector<int>> adjCities(n);
+        vector<bool> visited(n,false);
+        for(int i=0;i<connections.size();i++)
+        {
+            int city1=connections[i][0];
+            int city2=connections[i][1];
+            adjCities[city1].push_back(city2);
+            adjCities[city2].push_back(-city1);
         }
-        return dfs(al, vector<bool>(n) = {}, 0);
+        
+        //start dfs from city  0 
+        //when ever you found a positive then it need to be reversed
+        int count=0;
+        reorderPaths(0,adjCities,count,visited);
+        return count;
+
+    }
+    void reorderPaths(int currCity,vector<vector<int>>& adjCities,int& count,vector<bool>& visited)
+    {
+        visited[currCity]=true;
+        for(auto city:adjCities[currCity])
+        {
+            
+            if(!visited[abs(city)])
+            {
+                if(city>0) //reorder the path 
+                    count++;
+                reorderPaths(abs(city),adjCities,count,visited);
+            }
+        }
     }
 };
