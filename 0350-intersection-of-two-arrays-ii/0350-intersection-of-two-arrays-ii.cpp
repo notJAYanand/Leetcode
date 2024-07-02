@@ -7,7 +7,7 @@ public:
         int n1=nums1.size();
         int n2=nums2.size();
         
-        vector<int> result;
+        // vector<int> result;
 
         int i=0;
         int j=0;
