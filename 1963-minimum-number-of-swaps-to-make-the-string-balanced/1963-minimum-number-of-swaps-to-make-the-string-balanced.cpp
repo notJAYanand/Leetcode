@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minSwaps(string s) {
-        stack<char> stack;
+        // stack<char> stack;
         int nUnbalancedBraces=0;
 
         // for(auto i: s) {
